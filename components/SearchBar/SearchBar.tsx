@@ -1,7 +1,9 @@
 "use client";
-import { ChangeEvent, FC } from "react";
 
+import { ChangeEvent, FC } from "react";
 import styles from "./searchbar.module.css";
+
+import { FaFilter } from "react-icons/fa";
 
 interface SearchBarPropType {
   id: string;
@@ -10,6 +12,7 @@ interface SearchBarPropType {
   value: string;
   placeHolder: string;
   onChangeEvent: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChangeTypeEvent: () => void;
 }
 
 const SearchBar: FC<SearchBarPropType> = ({
@@ -19,18 +22,27 @@ const SearchBar: FC<SearchBarPropType> = ({
   value,
   placeHolder,
   onChangeEvent,
+  onChangeTypeEvent,
 }) => {
   return (
     <>
-      <input
-        id={id}
-        type={type}
-        name={name}
-        value={value}
-        className={styles.search_input}
-        onChange={onChangeEvent}
-        placeholder={placeHolder}
-      ></input>
+      <div className={styles.search_input_container}>
+        <input
+          id={id}
+          type={type}
+          name={name}
+          value={value}
+          className={styles.search_input}
+          onChange={onChangeEvent}
+          placeholder={placeHolder}
+        />
+        <FaFilter
+          color="black"
+          size={"1.2rem"}
+          className={styles.search_input_icon}
+          onClick={onChangeTypeEvent}
+        />
+      </div>
     </>
   );
 };
