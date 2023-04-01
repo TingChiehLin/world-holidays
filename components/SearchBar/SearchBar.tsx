@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, FC } from "react";
+import { ChangeEvent, FC, useState } from "react";
 import styles from "./searchbar.module.css";
 
 import { FaFilter } from "react-icons/fa";
@@ -24,6 +24,11 @@ const SearchBar: FC<SearchBarPropType> = ({
   onChangeEvent,
   onChangeTypeEvent,
 }) => {
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+  const handleDropdownEvent = () => {
+    console.log(isOpenModal);
+    setIsOpenModal(!isOpenModal);
+  };
   return (
     <>
       <div className={styles.search_input_container}>
@@ -40,7 +45,10 @@ const SearchBar: FC<SearchBarPropType> = ({
           color="black"
           size={"1.2rem"}
           className={styles.search_input_icon}
-          onClick={onChangeTypeEvent}
+          onClick={() => {
+            onChangeTypeEvent();
+            handleDropdownEvent();
+          }}
         />
       </div>
     </>

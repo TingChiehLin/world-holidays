@@ -14,7 +14,9 @@ const Home = () => {
   const handleOnChangeEvent = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
   };
-  const handleOnChangeTypeEvent = () => {};
+  const handleOnChangeTypeEvent = () => {
+    console.log("handleOnChangeTypeEvent ----");
+  };
   return (
     <main className={styles.container}>
       <h1>Holidays across the world</h1>
