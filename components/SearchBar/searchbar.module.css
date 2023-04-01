@@ -4,11 +4,11 @@
 
 .search_input_container {
   position: relative;
+  max-width: 32rem;
 }
 
 .search_input {
   width: 100%;
-  max-width: 32rem;
   height: 3rem;
   padding: 0 1.5rem;
   border: 1px solid #ccc;
