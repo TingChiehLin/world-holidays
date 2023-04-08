@@ -1,0 +1,22 @@
+.container {
+  width: full;
+  max-width: 1024px;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 6rem;
+}
+
+.marginTop {
+  margin-top: 2rem;
+}
+
+/*
+    Loading Spinner
+ */
+
+.loading_spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
