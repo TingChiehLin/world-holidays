@@ -24,7 +24,7 @@ const TableSection: FC<TableSectionPropType> = ({
           </tr>
         </thead>
         <tbody className={styles.table_data}>
-          <TableCell />
+          <TableCell typeName={""} />
         </tbody>
       </table>
     </>
@@ -32,9 +32,3 @@ const TableSection: FC<TableSectionPropType> = ({
 };
 
 export default TableSection;
-
-//     - Include the following states:
-//         - [ ]  Empty state (table without results)
-//         - [ ]  Loading state (table loading results)
-//         - [ ]  Error state (error in case the search fails)
-//     - Each holiday type has a different color of your preference.

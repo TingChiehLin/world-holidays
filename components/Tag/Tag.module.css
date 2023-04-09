@@ -1,0 +1,18 @@
+.tag_container {
+  width: 100%;
+  height: 2rem;
+  border-radius: 12px;
+  background-color: purple;
+}
+
+.tag_national_holiday {
+}
+
+.tag_observance {
+}
+
+.tag_common_holiday {
+}
+
+.tag_season {
+}

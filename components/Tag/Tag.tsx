@@ -1,11 +1,12 @@
 import { FC } from "react";
+import styles from "./Tag.module.css";
 
 interface TagTypeProp {
-  type: string;
+  typeName: string;
 }
 
-const Tag: FC<TagTypeProp> = ({ type }) => {
-  return <div></div>;
+const Tag: FC<TagTypeProp> = ({ typeName }) => {
+  return <div className={styles.tag_container}>{typeName}</div>;
 };
 
 export default Tag;

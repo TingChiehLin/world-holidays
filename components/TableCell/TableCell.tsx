@@ -1,11 +1,14 @@
 import { FC } from "react";
 import styles from "./TableCell.module.css";
+import Tag from "../Tag/Tag";
 
-interface TableCellTypeProp {}
+interface TableCellTypeProp {
+  typeName: string;
+}
 
-const TableCell: FC<TableCellTypeProp> = () => {
+const TableCell: FC<TableCellTypeProp> = ({ typeName }) => {
   return (
-    <tr>
+    <tr id="table-row" className="table_row">
       <th id="table-name" scope="row">
         New Year&aposs Day
       </th>
@@ -13,7 +16,9 @@ const TableCell: FC<TableCellTypeProp> = () => {
         Jan 1
       </td>
       <td id="table-description">Shrove xxxxx</td>
-      <td id="table-type">National holiday</td>
+      <td id="table-type">
+        <Tag typeName={"National holiday"} />
+      </td>
     </tr>
   );
 };

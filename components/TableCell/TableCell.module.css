@@ -1,0 +1,12 @@
+/* tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+} */
+
+.table_row {
+  border-top-left-radius: 10px;
+  background-color: red;
+}
+
+#table-row tr td {
+  border-top-right-radius: 10px;
+}
