@@ -1,5 +1,19 @@
 This is a practical project in order to improve my skills using the latest technology.
 
+![desktop_preview](./public/desktop_demo.png)
+
+![mobile_preview](./public/mobile_demo.png)
+
+## Table of contents
+
+- [Table of contents](#table-of-contents)
+- [Getting Started](#getting-started)
+- [Tech I used](#tech-i-used)
+- [API](#api)
+- [Challenge](#challenge)
+- [Learn More](#learn-more)
+- [Deploy on Vercel](#deploy-on-vercel)
+
 ## Getting Started
 
 Firstly, install node_modules dependencies

@@ -20,3 +20,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.flexLeftCenter {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 2rem;
+}
