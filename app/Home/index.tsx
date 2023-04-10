@@ -29,7 +29,12 @@ const Home: NextPage = () => {
     return response.json();
   };
   //["holidays",page]
-  const { data, status } = useQuery("holidays", fetchHolidays);
+  // The problem here is loading home page. It will immediately to fetch data.
+  //I want to fetch data when users submit when they type.
+  const { data, status, isPreviousData, isLoading, isError } = useQuery(
+    "holidays",
+    fetchHolidays
+  );
   console.log("Data", data);
   console.log("status", status);
   const handleOnChangeEvent = (e: ChangeEvent<HTMLInputElement>) => {
@@ -53,7 +58,7 @@ religious - Return religious holidays: buddhism, christian, hinduism, muslim, et
 observance - Observance, Seasons, Times
   */
 
-  if (status === "error") {
+  if (isError) {
     return <div>Error...</div>;
   }
 
@@ -74,7 +79,7 @@ observance - Observance, Seasons, Times
         <Button text={"Submit"} onClickEvent={handleSubmitEvent} />
       </div>
       <TableSection tableData={{}} currentState={status} />
-      {status === "loading" && (
+      {isLoading && (
         <div className={styles.loading_spinner}>
           <Image src={SPINNER} alt={"loading_spinner"} width={72} height={72} />
         </div>
