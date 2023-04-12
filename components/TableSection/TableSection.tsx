@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect, useId } from "react";
 import styles from "./TableSection.module.css";
 
 import TableCell from "../TableCell/TableCell";
@@ -12,6 +12,9 @@ const TableSection: FC<TableSectionPropType> = ({
   tableData,
   currentState,
 }) => {
+  const id = useId();
+  const filteringData = tableData;
+  console.log("filteringData", filteringData);
   return (
     <>
       <table className={styles.table_container}>
@@ -24,7 +27,22 @@ const TableSection: FC<TableSectionPropType> = ({
           </tr>
         </thead>
         <tbody className={styles.table_data}>
-          <TableCell typeName={""} />
+          {(filteringData || []).map((d: any) => (
+            <TableCell
+              key={id}
+              name={d.name}
+              description={d.description}
+              data={{
+                iso: "",
+                datetime: {
+                  year: 0,
+                  month: 0,
+                  day: 0,
+                },
+              }}
+              typeName={"National Holiday"}
+            />
+          ))}
         </tbody>
       </table>
     </>

@@ -16,6 +16,15 @@ interface SearchBarPropType {
   onChangeTypeEvent: () => void;
 }
 
+const initialCheckboxData = {
+  nationalHoliday: false,
+  observance: false,
+  localHoliday: false,
+  season: false,
+};
+
+const holidayTypeList = Object.keys(initialCheckboxData);
+
 const SearchBar: FC<SearchBarPropType> = ({
   id,
   type,
@@ -28,7 +37,6 @@ const SearchBar: FC<SearchBarPropType> = ({
 }) => {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
   const handleDropdownEvent = () => {
-    console.log(isOpenModal);
     setIsOpenModal(!isOpenModal);
   };
   return (
@@ -45,15 +53,17 @@ const SearchBar: FC<SearchBarPropType> = ({
           onChange={onChangeEvent}
           placeholder={placeHolder}
         />
-        <FaFilter
-          color="black"
-          size={"1.2rem"}
-          className={styles.search_input_icon}
-          onClick={() => {
-            onChangeTypeEvent();
-            handleDropdownEvent();
-          }}
-        />
+        <div className={styles.search_input_icon}>
+          <FaFilter
+            color="black"
+            size={"1.2rem"}
+            onClick={() => {
+              onChangeTypeEvent();
+              handleDropdownEvent();
+            }}
+          />
+          {isOpenModal && <></>}
+        </div>
       </div>
     </>
   );
