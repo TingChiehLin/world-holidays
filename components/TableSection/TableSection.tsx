@@ -40,7 +40,7 @@ const TableSection: FC<TableSectionPropType> = ({
                   day: 0,
                 },
               }}
-              typeName={"National Holiday"}
+              typeName={d.type[0]}
             />
           ))}
         </tbody>

@@ -6,7 +6,7 @@ interface TagTypeProp {
 }
 
 const Tag: FC<TagTypeProp> = ({ typeName }) => {
-  let tagBgColor = "";
+  let tagBgColor = typeName;
 
   switch (typeName) {
     case "National holiday":
