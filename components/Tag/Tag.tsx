@@ -1,28 +1,25 @@
 import { FC } from "react";
 import styles from "./Tag.module.css";
 
-interface TagTypeProp {
-  typeName: string;
+type Holidays =
+  | "National holiday"
+  | "Observance"
+  | "Common local holiday"
+  | "Season";
+
+interface TagProp {
+  typeName: Holidays;
 }
 
-const Tag: FC<TagTypeProp> = ({ typeName }) => {
-  let tagBgColor = "";
+const holidayColorMapper: { [key in Holidays]: string } = {
+  "National holiday": styles.tag_national_holiday,
+  Observance: styles.tag_observance,
+  "Common local holiday": styles.tag_common_holiday,
+  Season: styles.tag_season,
+};
 
-  switch (typeName) {
-    case "National holiday":
-      tagBgColor = styles.tag_national_holiday;
-      break;
-    case "Observance":
-      tagBgColor = styles.tag_observance;
-      break;
-    case "Common local holiday":
-      tagBgColor = styles.tag_common_holiday;
-      break;
-    case "Season":
-      tagBgColor = styles.tag_season;
-      break;
-  }
-
+const Tag: FC<TagProp> = ({ typeName }) => {
+  const tagBgColor = holidayColorMapper[typeName];
   return (
     <div className={`${styles.tag_container} ${tagBgColor}`}>{typeName}</div>
   );

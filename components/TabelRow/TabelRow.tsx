@@ -1,12 +1,12 @@
 import { FC } from "react";
-import styles from "./TableCell.module.css";
+import styles from "./TabelRow.module.css";
 import Tag from "../Tag/Tag";
 
-interface TableCellTypeProp {
+interface TabelRowProp {
   typeName: string;
 }
 
-const TableCell: FC<TableCellTypeProp> = ({ typeName }) => {
+const TabelRow: FC<TabelRowProp> = ({ typeName }) => {
   return (
     <tr id="table-row" className="table_row">
       <th id="table-name" scope="row">
@@ -23,4 +23,4 @@ const TableCell: FC<TableCellTypeProp> = ({ typeName }) => {
   );
 };
 
-export default TableCell;
+export default TabelRow;

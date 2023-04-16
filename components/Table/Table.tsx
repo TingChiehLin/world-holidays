@@ -1,17 +1,14 @@
 import { FC, useState, useEffect } from "react";
-import styles from "./TableSection.module.css";
+import styles from "./Table.module.css";
 
-import TableCell from "../TableCell/TableCell";
+import TabelRow from "../TabelRow";
 
 interface TableSectionPropType {
   tableData: any;
   currentState: string;
 }
 
-const TableSection: FC<TableSectionPropType> = ({
-  tableData,
-  currentState,
-}) => {
+const Table: FC<TableSectionPropType> = ({ tableData, currentState }) => {
   return (
     <>
       <table className={styles.table_container}>
@@ -24,11 +21,11 @@ const TableSection: FC<TableSectionPropType> = ({
           </tr>
         </thead>
         <tbody className={styles.table_data}>
-          <TableCell typeName={""} />
+          <TabelRow typeName={""} />
         </tbody>
       </table>
     </>
   );
 };
 
-export default TableSection;
+export default Table;
