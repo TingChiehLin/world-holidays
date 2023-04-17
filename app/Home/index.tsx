@@ -43,7 +43,7 @@ const Home: NextPage = () => {
       <Table tableData={{}} currentState={currentState} />
       {currentState === "Loading" && (
         <div className={styles.loading_spinner}>
-          <Image src={SPINNER} alt={"loading_spinner"} width={72} height={72} />
+          <Image src={SPINNER} alt={"loading"} width={72} height={72} />
         </div>
       )}
     </main>
