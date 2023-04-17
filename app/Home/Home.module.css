@@ -1,6 +1,6 @@
 .container {
-  width: full;
-  max-width: 1024px;
+  width: 100%;
+  max-width: 64rem;
   height: 100vh;
   margin: 0 auto;
   padding: 6rem;
@@ -19,11 +19,4 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-.flexLeftCenter {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  gap: 2rem;
 }

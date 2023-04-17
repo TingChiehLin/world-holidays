@@ -10,10 +10,11 @@ interface SearchBarPropType {
   type: string;
   name: string;
   value: string;
-  placeHolder: string;
+  placeholder: string;
   currentState: string;
-  onChangeEvent: (e: ChangeEvent<HTMLInputElement>) => void;
-  onChangeTypeEvent: () => void;
+  isInvalid: boolean;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onClick: () => void;
 }
 
 const initialCheckboxData = {
@@ -30,13 +31,15 @@ const SearchBar: FC<SearchBarPropType> = ({
   type,
   name,
   value,
-  placeHolder,
+  placeholder,
   currentState,
-  onChangeEvent,
-  onChangeTypeEvent,
+  isInvalid,
+  onChange,
+  onClick,
 }) => {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
   const handleDropdownEvent = () => {
+    console.log(isOpenModal);
     setIsOpenModal(!isOpenModal);
   };
   return (
@@ -50,20 +53,18 @@ const SearchBar: FC<SearchBarPropType> = ({
           className={`${styles.search_input} ${
             currentState === "error" && styles.search_error
           }`}
-          onChange={onChangeEvent}
-          placeholder={placeHolder}
+          onChange={onChange}
+          placeholder={placeholder}
         />
-        <div className={styles.search_input_icon}>
-          <FaFilter
-            color="black"
-            size={"1.2rem"}
-            onClick={() => {
-              onChangeTypeEvent();
-              handleDropdownEvent();
-            }}
-          />
-          {isOpenModal && <></>}
-        </div>
+        <FaFilter
+          color="black"
+          size={"1.2rem"}
+          className={styles.search_input_icon}
+          onClick={() => {
+            onClick();
+            handleDropdownEvent();
+          }}
+        />
       </div>
     </>
   );

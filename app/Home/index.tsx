@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, useState, useEffect } from "react";
+import { ChangeEvent, useState } from "react";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import { NextPage } from "next";
@@ -10,7 +10,7 @@ import styles from "./Home.module.css";
 
 import SPINNER from "../../public/assets/imgs/loading-spin.svg";
 import SearchBar from "@/components/SearchBar/SearchBar";
-import TableSection from "@/components/TableSection";
+import Table from "@/components/Table";
 import Button from "@/components/Button";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -79,17 +79,18 @@ observance - Observance, Seasons, Times
           type={"text"}
           name={"search-box"}
           value={searchText}
-          placeHolder={"Search country"}
+          placeholder="Search country"
           currentState={status}
-          onChangeEvent={handleOnChangeEvent}
-          onChangeTypeEvent={handleOnChangeTypeEvent}
+          isInvalid={false}
+          onChange={handleOnChangeEvent}
+          onClick={handleOnChangeTypeEvent}
         />
         <Button text={"Submit"} onClickEvent={handleSubmitEvent} />
       </div>
-      <TableSection tableData={holidayData} currentState={status} />
+      <Table tableData={holidayData} currentState={status} />
       {isLoading && (
         <div className={styles.loading_spinner}>
-          <Image src={SPINNER} alt={"loading_spinner"} width={72} height={72} />
+          <Image src={SPINNER} alt={"loading"} width={72} height={72} />
         </div>
       )}
     </main>
