@@ -1,7 +1,7 @@
 import { FC } from "react";
 import styles from "./Tag.module.css";
 
-type Holidays =
+export type Holidays =
   | "National holiday"
   | "Observance"
   | "Common local holiday"

@@ -73,7 +73,7 @@ observance - Observance, Seasons, Times
   return (
     <main className={styles.container}>
       <h1>Holidays across the world</h1>
-      <div className={`${styles.flexLeftCenter} ${styles.marginTop}`}>
+      <div className={`${styles.flexbox} ${styles.marginTop}`}>
         <SearchBar
           id={"search-box"}
           type={"text"}

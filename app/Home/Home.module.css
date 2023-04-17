@@ -10,6 +10,12 @@
   margin-top: 2rem;
 }
 
+.flexbox {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
 /*
     Loading Spinner
  */

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styles from "./TableCell.module.css";
-import Tag from "../Tag/Tag";
+import Tag, { Holidays } from "../Tag/Tag";
 
 type DataField = {
   iso: string;
@@ -15,7 +15,7 @@ interface TableCellTypeProp {
   name: string;
   description: string;
   data: DataField;
-  typeName: string;
+  typeName: Holidays;
 }
 
 const TableCell: FC<TableCellTypeProp> = ({
