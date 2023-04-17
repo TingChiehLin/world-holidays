@@ -1,6 +1,6 @@
 .container {
-  width: full;
-  max-width: 1024px;
+  width: 100%;
+  max-width: 64rem;
   height: 100vh;
   margin: 0 auto;
   padding: 6rem;
@@ -11,8 +11,8 @@
 }
 
 /*
-  Loading Spinner
-*/
+    Loading Spinner
+ */
 
 .loading_spinner {
   position: absolute;
