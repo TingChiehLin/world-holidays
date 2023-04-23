@@ -38,10 +38,7 @@ const SearchBar: FC<SearchBarPropType> = ({
   onClick,
 }) => {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
-  const handleDropdownEvent = () => {
-    console.log(isOpenModal);
-    setIsOpenModal(!isOpenModal);
-  };
+
   return (
     <>
       <div className={styles.search_input_container}>
@@ -62,7 +59,6 @@ const SearchBar: FC<SearchBarPropType> = ({
           className={styles.search_input_icon}
           onClick={() => {
             onClick();
-            handleDropdownEvent();
           }}
         />
       </div>

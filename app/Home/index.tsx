@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState, useEffect } from "react";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import { NextPage } from "next";
@@ -48,34 +48,46 @@ const Home: NextPage = () => {
   const { data: countriesData, refetch: fetchCountriesRefetch } = useQuery(
     "countries",
     fetchCountries,
-    { enabled: false }
+    { enabled: false,
+      onSuccess: (dataRetrieved) => {
+        const countries = dataRetrieved?.response.countries;
+        console.log('countries:',countries)
+        // type issues, any better name for type of country_name? not always any
+        const findCertainCountry = countries?.find(
+          ({ country_name }: any) =>
+            country_name.toLowerCase() === searchText.trim().toLowerCase()
+        );
+        console.log('findCertainCountry:',findCertainCountry)
+        const symbol = findCertainCountry?.["iso-3166"];
+        setSymbolCountry(symbol);
+        console.log('symbol:',symbolCountry);
+      },
+      onError: (error: any) => console.log(error.message)
+    }
   );
 
   //------issues, the first time is fail
   const holidayData = data?.response.holidays;
-  console.log("Holiday:", holidayData);
+  //console.log("Holiday:", holidayData);
 
   const handleOnChangeEvent = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
   };
-  const handleOnChangeTypeEvent = () => {
-    //handle Type
+
+  const handleDropdownEvent = () => {
+    console.log("isOpenModal",isOpenModal);
+    setIsOpenModal(!isOpenModal);
   };
+
   const handleSubmitEvent = () => {
     if (searchText.trim() === "") {
       return;
     }
     fetchCountriesRefetch();
-    const countries = countriesData?.response.countries;
-    // type issues, any better name for type of country_name? not always any
-    const findCertainCountry = countries?.find(
-      ({ country_name }: any) =>
-        country_name.toLowerCase() === searchText.trim().toLowerCase()
-    );
-    const symbol = findCertainCountry?.["iso-3166"];
-    setSymbolCountry(symbol);
-    fetchHolidayRefetch();
+    //fetchHolidayRefetch();
   };
+
+  useEffect(() => {}, []);
 
   if (isError) {
     return <div>Error...</div>;
@@ -94,7 +106,7 @@ const Home: NextPage = () => {
           currentState={status}
           isInvalid={false}
           onChange={handleOnChangeEvent}
-          onClick={handleOnChangeTypeEvent}
+          onClick={handleDropdownEvent}
         />
         <Button text={"Submit"} onClickEvent={handleSubmitEvent} />
       </div>
