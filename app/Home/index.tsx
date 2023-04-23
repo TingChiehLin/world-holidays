@@ -17,33 +17,44 @@ const inter = Inter({ subsets: ["latin"] });
 
 const Home: NextPage = () => {
   const [searchText, setSearchText] = useState<string>("");
+  const [symbolCountry, setSymbolCountry] = useState<string>("");
   const [currentState, setCurrentState] = useState<string>("");
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
-  // const [holidays, setHolidays] = useState<any>([]);
+
   const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
   const URL = `https://calendarific.com/api/v2/holidays?`;
-  const testURL = "https://rickandmortyapi.com/api/character";
-  const searchURL = `${URL}api_key=${API_KEY}&country=${searchText.trim()}&year=2022`;
   const countriesURL = `https://calendarific.com/api/v2/countries?api_key=${API_KEY}`;
-  const fetchHolidays = async () => {
-    const response = await fetch(searchURL);
-    return response.json();
-  };
+  const searchURL = `${URL}api_key=${API_KEY}&country=${symbolCountry}&year=2022`;
 
   const fetchCountries = async () => {
     const response = await fetch(countriesURL);
     return response.json();
   };
 
-  //["holidays",page]
-  // The problem here is loading home page. It will immediately to fetch data.
-  //I want to fetch data when users submit when they type.
-  const { data, status, isPreviousData, isLoading, isError, refetch } =
-    useQuery("holidays", fetchHolidays, { enabled: false });
-  //const countries = useQuery('countries',fetchCountries)
-  //console.log('countries:',countries);
-  console.log("holiday:", data?.response.holidays);
+  const fetchHolidays = async () => {
+    const response = await fetch(searchURL);
+    return response.json();
+  };
+
+  const {
+    data,
+    status,
+    isPreviousData,
+    isLoading,
+    isError,
+    refetch: fetchHolidayRefetch,
+  } = useQuery("holidays", fetchHolidays, { enabled: false });
+
+  const { data: countriesData, refetch: fetchCountriesRefetch } = useQuery(
+    "countries",
+    fetchCountries,
+    { enabled: false }
+  );
+
+  //------issues, the first time is fail
   const holidayData = data?.response.holidays;
+  console.log("Holiday:", holidayData);
+
   const handleOnChangeEvent = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
   };
@@ -51,20 +62,20 @@ const Home: NextPage = () => {
     //handle Type
   };
   const handleSubmitEvent = () => {
-    //&country=US&year=2019&type=local`
-    refetch();
+    if (searchText.trim() === "") {
+      return;
+    }
+    fetchCountriesRefetch();
+    const countries = countriesData?.response.countries;
+    // type issues, any better name for type of country_name? not always any
+    const findCertainCountry = countries?.find(
+      ({ country_name }: any) =>
+        country_name.toLowerCase() === searchText.trim().toLowerCase()
+    );
+    const symbol = findCertainCountry?.["iso-3166"];
+    setSymbolCountry(symbol);
+    fetchHolidayRefetch();
   };
-
-  /*
-  - [ ]  Search by holiday “Type”.
-  - the API accepts [4 types](https://calendarific.com/api-documentation), and you can pass it in the endpoint as a param:
-  `api/v2/holidays?&api_key=key&country=US&year=2019**&type=local**`
-  - [ ]  Bonus: (junior-mid) Implement a dropdown as shown in the mockup above.
-  national - Returns public, federal and bank holidays
-local - Returns local, regional and state holidays
-religious - Return religious holidays: buddhism, christian, hinduism, muslim, etc
-observance - Observance, Seasons, Times
-  */
 
   if (isError) {
     return <div>Error...</div>;
@@ -87,7 +98,7 @@ observance - Observance, Seasons, Times
         />
         <Button text={"Submit"} onClickEvent={handleSubmitEvent} />
       </div>
-      <Table tableData={holidayData} currentState={status} />
+      <Table tableData={data} currentState={status} />
       {isLoading && (
         <div className={styles.loading_spinner}>
           <Image src={SPINNER} alt={"loading"} width={72} height={72} />

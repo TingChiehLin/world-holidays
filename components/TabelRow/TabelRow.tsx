@@ -3,10 +3,10 @@ import styles from "./TabelRow.module.css";
 import Tag from "../Tag/Tag";
 
 interface TabelRowProp {
-  typeName: string;
+  content: string;
 }
 
-const TabelRow: FC<TabelRowProp> = ({ typeName }) => {
+const TabelRow: FC<TabelRowProp> = ({ content }) => {
   return (
     <tr id="table-row" className="table_row">
       <th id="table-name" scope="row">

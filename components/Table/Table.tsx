@@ -21,7 +21,7 @@ const Table: FC<TableSectionPropType> = ({ tableData, currentState }) => {
           </tr>
         </thead>
         <tbody className={styles.table_data}>
-          <TabelRow typeName={""} />
+          <TabelRow content={""} />
         </tbody>
       </table>
     </>
