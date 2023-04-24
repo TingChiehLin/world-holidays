@@ -28,6 +28,7 @@ const Home: NextPage = () => {
 
   const fetchCountries = async () => {
     const response = await fetch(countriesURL);
+    console.log("3 - fetch country");
     return response.json();
   };
 
@@ -43,39 +44,45 @@ const Home: NextPage = () => {
     isLoading,
     isError,
     refetch: fetchHolidayRefetch,
-  } = useQuery("holidays", fetchHolidays, { enabled: false });
+  } = useQuery("holidays", fetchHolidays, {
+    enabled: false,
+    onSuccess: (dataRetrieved) => {},
+  });
 
   const { data: countriesData, refetch: fetchCountriesRefetch } = useQuery(
     "countries",
     fetchCountries,
-    { enabled: false,
+    {
+      enabled: false,
       onSuccess: (dataRetrieved) => {
         const countries = dataRetrieved?.response.countries;
-        console.log('countries:',countries)
+        console.log("countries:", countries);
+        console.log("searchText", searchText);
         // type issues, any better name for type of country_name? not always any
         const findCertainCountry = countries?.find(
           ({ country_name }: any) =>
             country_name.toLowerCase() === searchText.trim().toLowerCase()
         );
-        console.log('findCertainCountry:',findCertainCountry)
+        console.log("findCertainCountry:", findCertainCountry);
         const symbol = findCertainCountry?.["iso-3166"];
+        console.log("symbol:", symbol);
         setSymbolCountry(symbol);
-        console.log('symbol:',symbolCountry);
+        console.log("4");
       },
-      onError: (error: any) => console.log(error.message)
+      onError: (error: any) => console.log(error.message),
     }
   );
-
+  console.log("symbolCountry:", symbolCountry);
   //------issues, the first time is fail
   const holidayData = data?.response.holidays;
-  //console.log("Holiday:", holidayData);
+  console.log("Holiday:", holidayData);
 
   const handleOnChangeEvent = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
   };
 
   const handleDropdownEvent = () => {
-    console.log("isOpenModal",isOpenModal);
+    console.log("isOpenModal", isOpenModal);
     setIsOpenModal(!isOpenModal);
   };
 
@@ -83,11 +90,15 @@ const Home: NextPage = () => {
     if (searchText.trim() === "") {
       return;
     }
+    console.log("1");
     fetchCountriesRefetch();
-    //fetchHolidayRefetch();
+    console.log("2");
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (!symbolCountry) return;
+    fetchHolidayRefetch();
+  }, [symbolCountry]);
 
   if (isError) {
     return <div>Error...</div>;
