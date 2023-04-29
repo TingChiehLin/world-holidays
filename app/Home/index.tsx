@@ -27,8 +27,9 @@ const Home: NextPage = () => {
   const searchURL = `${URL}api_key=${API_KEY}&country=${symbolCountry}&year=2022`;
 
   const fetchCountries = async () => {
+    console.log("response1:");
     const response = await fetch(countriesURL);
-    console.log("3 - fetch country");
+    console.log("response2:", response);
     return response.json();
   };
 
@@ -63,42 +64,38 @@ const Home: NextPage = () => {
           ({ country_name }: any) =>
             country_name.toLowerCase() === searchText.trim().toLowerCase()
         );
-        console.log("findCertainCountry:", findCertainCountry);
         const symbol = findCertainCountry?.["iso-3166"];
         console.log("symbol:", symbol);
         setSymbolCountry(symbol);
-        console.log("4");
       },
       onError: (error: any) => console.log(error.message),
     }
   );
-  console.log("symbolCountry:", symbolCountry);
-  //------issues, the first time is fail
+
   const holidayData = data?.response.holidays;
-  console.log("Holiday:", holidayData);
 
   const handleOnChangeEvent = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
   };
 
   const handleDropdownEvent = () => {
-    console.log("isOpenModal", isOpenModal);
     setIsOpenModal(!isOpenModal);
   };
 
   const handleSubmitEvent = () => {
+    console.log("Submit", searchText)
+    
     if (searchText.trim() === "") {
       return;
     }
-    console.log("1");
     fetchCountriesRefetch();
-    console.log("2");
+    console.log("Refresh")
   };
 
   useEffect(() => {
     if (!symbolCountry) return;
     fetchHolidayRefetch();
-  }, [symbolCountry]);
+  }, [fetchHolidayRefetch, symbolCountry]);
 
   if (isError) {
     return <div>Error...</div>;
@@ -121,7 +118,7 @@ const Home: NextPage = () => {
         />
         <Button text={"Submit"} onClickEvent={handleSubmitEvent} />
       </div>
-      <Table tableData={data} currentState={status} />
+      <Table tableData={holidayData} />
       {isLoading && (
         <div className={styles.loading_spinner}>
           <Image src={SPINNER} alt={"loading"} width={72} height={72} />

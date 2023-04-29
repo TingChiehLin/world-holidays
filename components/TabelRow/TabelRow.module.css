@@ -1,12 +1,21 @@
-/* tr:last-child td:last-child {
-  border-bottom-right-radius: 10px;
-} */
-
 .table_row {
   border-top-left-radius: 10px;
-  background-color: red;
+  line-height: 1.2rem;
+  letter-spacing: 0.05em;
 }
 
-#table-row tr td {
+.table_row td {
+  padding: 20px;
+}
+
+.table_row td {
+  text-align: center;
+}
+
+.table_row td {
   border-top-right-radius: 10px;
+}
+
+.table_row .tableDescription {
+  text-align: left;
 }

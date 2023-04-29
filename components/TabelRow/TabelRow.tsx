@@ -1,23 +1,27 @@
 import { FC } from "react";
 import styles from "./TabelRow.module.css";
 import Tag from "../Tag/Tag";
+import { Holidays } from "../Tag";
 
-interface TabelRowProp {
-  content: string;
+export interface TabelRowProp {
+  name: string;
+  date: string;
+  description: string;
+  type: Holidays;
 }
 
-const TabelRow: FC<TabelRowProp> = ({ content }) => {
+const TabelRow: FC<TabelRowProp> = ({ name, date, description, type }) => {
   return (
-    <tr id="table-row" className="table_row">
+    <tr id="table-row" className={styles.table_row}>
       <th id="table-name" scope="row">
-        New Year&aposs Day
+        {name}
       </th>
       <td id="table-date" className={styles.tableNumber}>
-        Jan 1
+        {date}
       </td>
-      <td id="table-description">Shrove xxxxx</td>
-      <td id="table-type">
-        <Tag typeName={"National holiday"} />
+      <td className={styles.tableDescription}>{description}</td>
+      <td className={styles.tableType}>
+        <Tag type={type} />
       </td>
     </tr>
   );

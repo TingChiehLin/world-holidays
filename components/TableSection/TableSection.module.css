@@ -30,13 +30,8 @@
   width: 25%;
 }
 
-.table_container th,
-.table_container td {
+.table_container th {
   padding: 20px;
-}
-
-.table_data tr td {
-  text-align: left;
 }
 
 /* top-left border-radius */
