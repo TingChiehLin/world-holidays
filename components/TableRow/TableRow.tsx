@@ -1,16 +1,16 @@
 import { FC } from "react";
-import styles from "./TabelRow.module.css";
+import styles from "./TableRow.module.css";
 import Tag from "../Tag/Tag";
 import { Holidays } from "../Tag";
 
-export interface TabelRowProp {
+export interface TableRowProp {
   name: string;
   date: string;
   description: string;
-  type: Holidays;
+  types: Holidays[];
 }
 
-const TabelRow: FC<TabelRowProp> = ({ name, date, description, type }) => {
+const TableRow: FC<TableRowProp> = ({ name, date, description, types }) => {
   return (
     <tr id="table-row" className={styles.table_row}>
       <th id="table-name" scope="row">
@@ -21,10 +21,12 @@ const TabelRow: FC<TabelRowProp> = ({ name, date, description, type }) => {
       </td>
       <td className={styles.tableDescription}>{description}</td>
       <td className={styles.tableType}>
-        <Tag type={type} />
+        {types.map((type: Holidays) => (
+          <Tag key={type} type={type} />
+        ))}
       </td>
     </tr>
   );
 };
 
-export default TabelRow;
+export default TableRow;
