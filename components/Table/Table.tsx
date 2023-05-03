@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, useId } from "react";
+import { FC, useId } from "react";
 import styles from "./Table.module.css";
 
 import TableRow from "../TableRow";

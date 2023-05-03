@@ -12,6 +12,7 @@
 .table_container thead {
   border-radius: 10px;
   background-color: rgb(230, 230, 230);
+  text-align: left;
 }
 
 .table_container thead th:nth-child(1) {
@@ -28,6 +29,16 @@
 
 .table_container thead th:nth-child(4) {
   width: 25%;
+}
+
+@media (max-width: 768px) {
+  .table_container thead th:nth-child(3) {
+    display: none;
+  }
+
+  .table_container thead th:nth-child(4) {
+    display: none;
+  }
 }
 
 .table_container th,
