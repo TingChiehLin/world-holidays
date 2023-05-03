@@ -23,7 +23,7 @@ const Table: FC<TableSectionPropType> = ({ tableData }) => {
   const tableDataID = useId();
   return (
     <>
-      <table className={styles.table_container}>
+      <table className={`${styles.table_container} ${tableData != undefined && styles.close_table_container_radius_bl + " " + styles.close_table_container_radius_br}`}>
         <thead>
           <tr>
             <th scope="col">Name</th>
