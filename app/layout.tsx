@@ -13,7 +13,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <div className="content-wrap">{children}</div>
         <footer>
           <span>Developer by Ting Chieh Lin</span>
         </footer>
