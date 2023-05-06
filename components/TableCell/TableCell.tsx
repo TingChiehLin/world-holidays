@@ -36,7 +36,7 @@ const TableCell: FC<TableCellTypeProp> = ({
       </td>
       <td id="table-description">{description}</td>
       <td id="table-type">
-        <Tag typeName={typeName} />
+        <Tag type={typeName} />
       </td>
     </tr>
   );
