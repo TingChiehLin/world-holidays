@@ -13,16 +13,14 @@ interface TagProp {
 
 const holidayColorMapper: { [key in Holidays]: string } = {
   "National holiday": styles.tag_national_holiday,
-  "Observance": styles.tag_observance,
+  Observance: styles.tag_observance,
   "Common local holiday": styles.tag_common_holiday,
-  "Season": styles.tag_season,
+  Season: styles.tag_season,
 };
 
 const Tag: FC<TagProp> = ({ type }) => {
   const tagBgColor = holidayColorMapper[type];
-  return (
-    <div className={`${styles.tag_container} ${tagBgColor}`}>{type}</div>
-  );
+  return <div className={`${styles.tag_container} ${tagBgColor}`}>{type}</div>;
 };
 
 export default Tag;

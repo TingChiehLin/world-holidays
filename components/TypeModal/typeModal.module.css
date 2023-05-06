@@ -1,2 +1,6 @@
 .type_modal_container {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 1.5rem;
 }

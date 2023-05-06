@@ -12,20 +12,27 @@ import SPINNER from "../../public/assets/imgs/loading-spin.svg";
 import SearchBar from "@/components/SearchBar/SearchBar";
 import Table from "@/components/Table";
 import Button from "@/components/Button";
+import TypeModal from "@/components/TypeModal/TypeModal";
+import Radio from "@/components/Radio";
 
 const raleway = Raleway({ subsets: ["latin"] });
+
+const initialHolidayTypes = {
+  national: "national",
+  local: "local",
+  religious: "religious",
+  observance: "observance",
+};
 
 const Home: NextPage = () => {
   const [searchText, setSearchText] = useState<string>("");
   const [symbolCountry, setSymbolCountry] = useState<string>("");
-  const [currentState, setCurrentState] = useState<string>("");
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
-
+  const [holidayTypes, setHolidayTypes] = useState<string>("");
   const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
   const URL = `https://calendarific.com/api/v2/holidays?`;
   const countriesURL = `https://calendarific.com/api/v2/countries?api_key=${API_KEY}`;
-  const searchURL = `${URL}api_key=${API_KEY}&country=${symbolCountry}&year=2022`;
-
+  const searchURL = `${URL}api_key=${API_KEY}&country=${symbolCountry}&year=2022&type=${holidayTypes}`;
   const fetchCountries = async () => {
     console.log("response1:");
     const response = await fetch(countriesURL);
@@ -57,15 +64,12 @@ const Home: NextPage = () => {
       enabled: false,
       onSuccess: (dataRetrieved) => {
         const countries = dataRetrieved?.response.countries;
-        console.log("countries:", countries);
-        console.log("searchText", searchText);
         // type issues, any better name for type of country_name? not always any
         const findCertainCountry = countries?.find(
           ({ country_name }: any) =>
             country_name.toLowerCase() === searchText.trim().toLowerCase()
         );
         const symbol = findCertainCountry?.["iso-3166"];
-        console.log("symbol:", symbol);
         setSymbolCountry(symbol);
       },
       onError: (error: any) => console.log(error.message),
@@ -73,6 +77,7 @@ const Home: NextPage = () => {
   );
 
   const holidayData = data?.response.holidays;
+  const holidaysList = Object.keys(initialHolidayTypes);
 
   const handleOnChangeEvent = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
@@ -80,6 +85,10 @@ const Home: NextPage = () => {
 
   const handleDropdownEvent = () => {
     setIsOpenModal(!isOpenModal);
+  };
+
+  const handChangeType = (e: ChangeEvent<HTMLInputElement>) => {
+    setHolidayTypes(e.target.value);
   };
 
   const handleSubmitEvent = () => {
@@ -118,6 +127,18 @@ const Home: NextPage = () => {
         />
         <Button text={"Submit"} onClickEvent={handleSubmitEvent} />
       </div>
+      <TypeModal>
+        {holidaysList.map((option: string) => {
+          return (
+            <Radio
+              key={option}
+              option={option}
+              currentValue={holidayTypes}
+              onChange={handChangeType}
+            />
+          );
+        })}
+      </TypeModal>
       <Table tableData={holidayData} />
       {isLoading && (
         <div className={styles.loading_spinner}>
