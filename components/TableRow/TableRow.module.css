@@ -1,5 +1,4 @@
 .table_row {
-  border-top-left-radius: 10px;
   line-height: 1.2rem;
   letter-spacing: 0.05em;
   text-align: left;
@@ -7,5 +6,8 @@
 
 .table_row td {
   padding: 20px;
-  border-top-right-radius: 10px;
+}
+
+.table_row:nth-child(even) {
+  background-color: #f1f1f1;
 }

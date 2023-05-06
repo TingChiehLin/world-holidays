@@ -3,7 +3,7 @@
   width: 100%;
   margin-top: 3rem;
   border-collapse: collapse;
-  border: 1px solid rgb(220, 220, 220);
+  border: 1px solid #ccc;
   border-radius: 10px;
   border-style: hidden;
   box-shadow: 0 0 0 1px #666;
@@ -12,6 +12,7 @@
 .table_container thead {
   border-radius: 10px;
   background-color: rgb(230, 230, 230);
+  border-bottom: 1px solid #ccc;
   text-align: left;
 }
 

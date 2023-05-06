@@ -2,7 +2,7 @@
 
 import { ChangeEvent, useState, useEffect } from "react";
 import Image from "next/image";
-import { Inter } from "next/font/google";
+import { Raleway } from "next/font/google";
 import { NextPage } from "next";
 import { useQuery } from "react-query";
 
@@ -13,7 +13,7 @@ import SearchBar from "@/components/SearchBar/SearchBar";
 import Table from "@/components/Table";
 import Button from "@/components/Button";
 
-const inter = Inter({ subsets: ["latin"] });
+const raleway = Raleway({ subsets: ["latin"] });
 
 const Home: NextPage = () => {
   const [searchText, setSearchText] = useState<string>("");
@@ -83,13 +83,13 @@ const Home: NextPage = () => {
   };
 
   const handleSubmitEvent = () => {
-    console.log("Submit", searchText)
-    
+    console.log("Submit", searchText);
+
     if (searchText.trim() === "") {
       return;
     }
     fetchCountriesRefetch();
-    console.log("Refresh")
+    console.log("Refresh");
   };
 
   useEffect(() => {
@@ -102,7 +102,7 @@ const Home: NextPage = () => {
   }
 
   return (
-    <main className={styles.container}>
+    <main className={`${styles.container} ${raleway.className}`}>
       <h1>Holidays across the world</h1>
       <div className={`${styles.flexbox} ${styles.marginTop}`}>
         <SearchBar
