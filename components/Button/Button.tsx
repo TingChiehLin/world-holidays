@@ -2,14 +2,14 @@ import { FC } from "react";
 import styles from "./button.module.css";
 
 interface ButtonTypeProp {
-  text: string;
+  children: React.ReactNode;
   onClickEvent: () => void;
 }
 
-const Button: FC<ButtonTypeProp> = ({ text, onClickEvent }) => {
+const Button: FC<ButtonTypeProp> = ({ children, onClickEvent }) => {
   return (
     <button className={styles.button_container} onClick={onClickEvent}>
-      {text}
+      {children}
     </button>
   );
 };

@@ -125,7 +125,7 @@ const Home: NextPage = () => {
           onChange={handleOnChangeEvent}
           onClick={handleDropdownEvent}
         />
-        <Button text={"Submit"} onClickEvent={handleSubmitEvent} />
+        <Button onClickEvent={handleSubmitEvent}>Submit</Button>
       </div>
       <TypeModal>
         {holidaysList.map((option: string) => {

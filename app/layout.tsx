@@ -15,7 +15,16 @@ export default function RootLayout({
       <body>
         <div className="content-wrap">{children}</div>
         <footer>
-          <span>Developer by Ting Chieh Lin</span>
+          <span>
+            Developed by{" "}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/TingChiehLin/world-holidays"
+            >
+              Ting Chieh Lin
+            </a>
+          </span>
         </footer>
       </body>
     </html>
