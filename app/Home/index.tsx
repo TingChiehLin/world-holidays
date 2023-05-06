@@ -93,7 +93,6 @@ const Home: NextPage = () => {
 
   const handleSubmitEvent = () => {
     console.log("Submit", searchText);
-
     if (searchText.trim() === "") {
       return;
     }
