@@ -32,7 +32,11 @@ const Home: NextPage = () => {
   const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
   const URL = `https://calendarific.com/api/v2/holidays?`;
   const countriesURL = `https://calendarific.com/api/v2/countries?api_key=${API_KEY}`;
-  const searchURL = `${URL}api_key=${API_KEY}&country=${symbolCountry}&year=2022&type=${holidayTypes}`;
+  const searchURL = `${URL}api_key=${API_KEY}&country=${symbolCountry}&year=2022${
+    holidayTypes && `&type=${holidayTypes}`
+  }`;
+  console.log("searchURL:", searchURL);
+
   const fetchCountries = async () => {
     console.log("response1:");
     const response = await fetch(countriesURL);
@@ -51,10 +55,13 @@ const Home: NextPage = () => {
     isPreviousData,
     isLoading,
     isError,
-    refetch: fetchHolidayRefetch,
+    // refetch: fetchHolidayRefetch,
   } = useQuery("holidays", fetchHolidays, {
-    enabled: false,
-    onSuccess: (dataRetrieved) => {},
+    // enabled: false,
+    onSuccess: (dataRetrieved) => {
+
+      
+    },
   });
 
   const { data: countriesData, refetch: fetchCountriesRefetch } = useQuery(
@@ -64,7 +71,6 @@ const Home: NextPage = () => {
       enabled: false,
       onSuccess: (dataRetrieved) => {
         const countries = dataRetrieved?.response.countries;
-        // type issues, any better name for type of country_name? not always any
         const findCertainCountry = countries?.find(
           ({ country_name }: any) =>
             country_name.toLowerCase() === searchText.trim().toLowerCase()
@@ -100,10 +106,10 @@ const Home: NextPage = () => {
     console.log("Refresh");
   };
 
-  useEffect(() => {
-    if (!symbolCountry) return;
-    fetchHolidayRefetch();
-  }, [fetchHolidayRefetch, symbolCountry, holidayTypes]);
+  // useEffect(() => {
+  //   if (!symbolCountry) return;
+  //   // fetchHolidayRefetch();
+  // }, [symbolCountry, holidayTypes]);
 
   if (isError) {
     return <div>Error...</div>;
