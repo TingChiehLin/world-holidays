@@ -103,7 +103,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     if (!symbolCountry) return;
     fetchHolidayRefetch();
-  }, [fetchHolidayRefetch, symbolCountry]);
+  }, [fetchHolidayRefetch, symbolCountry, holidayTypes]);
 
   if (isError) {
     return <div>Error...</div>;
