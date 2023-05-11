@@ -1,4 +1,4 @@
-import { FC, useId } from "react";
+import { FC } from "react";
 import styles from "./Table.module.css";
 
 import TableRow from "../TableRow";
@@ -20,16 +20,22 @@ interface TableSectionPropType {
 
 const Table: FC<TableSectionPropType> = ({ tableData }) => {
   console.log("tableData:", tableData);
-  const tableDataID = useId();
   return (
     <>
-      <table className={`${styles.table_container} ${tableData != undefined && styles.close_table_container_radius_bl + " " + styles.close_table_container_radius_br}`}>
+      <table
+        className={`${styles.table_container} ${
+          tableData != undefined &&
+          styles.close_table_container_radius_bl +
+            " " +
+            styles.close_table_container_radius_br
+        }`}
+      >
         <thead>
           <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Date</th>
-            <th scope="col">Description</th>
-            <th scope="col">Type</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Type</th>
           </tr>
         </thead>
         <tbody className={styles.table_data}>

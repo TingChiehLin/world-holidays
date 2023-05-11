@@ -4,11 +4,11 @@ import styles from "./radio.module.css";
 
 interface RadioPropType {
   option: string;
-  currentValue: string;
+  value: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Radio: FC<RadioPropType> = ({ option, currentValue, onChange }) => {
+const Radio: FC<RadioPropType> = ({ option, value, onChange }) => {
   return (
     <div className={styles.radioContainer}>
       <input
@@ -16,7 +16,7 @@ const Radio: FC<RadioPropType> = ({ option, currentValue, onChange }) => {
         id={option}
         name="filter type"
         value={option}
-        checked={option === currentValue}
+        checked={option === value}
         onChange={onChange}
       />
       <label htmlFor={option}>{option}</label>

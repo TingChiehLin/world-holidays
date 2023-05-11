@@ -34,3 +34,16 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+/*
+ Image Center
+*/
+
+.imageCenterContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2.5rem;
+}
+

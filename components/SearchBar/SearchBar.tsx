@@ -11,7 +11,6 @@ interface SearchBarPropType {
   name: string;
   value: string;
   placeholder: string;
-  currentState: string;
   isInvalid: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onClick: () => void;
@@ -32,7 +31,6 @@ const SearchBar: FC<SearchBarPropType> = ({
   name,
   value,
   placeholder,
-  currentState,
   isInvalid,
   onChange,
   onClick,
@@ -48,7 +46,7 @@ const SearchBar: FC<SearchBarPropType> = ({
           name={name}
           value={value}
           className={`${styles.search_input} ${
-            currentState === "error" && styles.search_error
+            isInvalid && styles.search_error
           }`}
           onChange={onChange}
           placeholder={placeholder}

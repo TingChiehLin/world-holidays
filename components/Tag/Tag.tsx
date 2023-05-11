@@ -19,7 +19,7 @@ const holidayColorMapper: { [key in Holidays]: string } = {
 };
 
 const Tag: FC<TagProp> = ({ type }) => {
-  const tagBgColor = holidayColorMapper[type];
+  const tagBgColor = holidayColorMapper[type] || styles.tag_default;
   return <div className={`${styles.tag_container} ${tagBgColor}`}>{type}</div>;
 };
 

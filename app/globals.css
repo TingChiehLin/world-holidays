@@ -131,7 +131,7 @@ a {
 
 footer {
   width: 100%;
-  background-color: blueviolet;
+  background-color: rgb(3, 50, 61);
   display: flex;
   justify-content: center;
   align-items: center;

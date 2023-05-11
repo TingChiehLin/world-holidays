@@ -1,12 +1,12 @@
 .tag_container {
   width: 100%;
   max-width: 10rem;
-  height: 2rem;
   border-radius: 12px;
   font-weight: 300;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 7px;
 }
 
 .tag_national_holiday {
@@ -23,4 +23,8 @@
 
 .tag_season {
   background-color: rgb(255, 164, 90);
+}
+
+.styles.tag_default {
+  background-color: #aaa;
 }
