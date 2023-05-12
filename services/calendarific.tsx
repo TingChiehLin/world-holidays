@@ -6,7 +6,6 @@ export const API_ENDPOINT = `https://calendarific.com/api/v2/`;
 
 export const useCountries = (fetchFun: any) => {
   return useQuery("countries", fetchFun, {
-    enabled: false,
     onError: (error: any) => console.log(error.message),
   });
 };
