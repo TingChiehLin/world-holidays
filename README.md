@@ -62,6 +62,7 @@ To learn more from this project, take a look at the following resources:
 
 - [Border Property](https://stackoverflow.com/questions/628301/the-border-radius-property-and-border-collapsecollapse-dont-mix-how-can-i-use) - To resolve border issue
 - [React Query Course](https://www.youtube.com/watch?v=NQULKpW6hK4) - data-fetching library with fetching, caching, synchronising, and updating the server state in my react application
+- [](https://www.w3.org/WAI/tutorials/images/decorative/) - Understung Decorative Images for img tag
 
 ## Deploy on Vercel
 

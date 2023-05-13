@@ -32,35 +32,21 @@ const initialHolidayTypes = {
   observance: "observance",
 };
 
-const fetchCountries = async () => {
-  console.log("response1:");
-  const countriesURL = `${API_ENDPOINT}countries?api_key=${API_KEY}`;
-  const response = await fetch(countriesURL);
-  console.log("response countries:", response);
-  return response.json();
-};
-
-const fetchHolidays = async ({
-  symbolCountry,
-  holidayTypes,
-}: {
-  symbolCountry: string;
-  holidayTypes: string;
-}) => {
-  const searchURL = `${API_ENDPOINT}holidays?api_key=${API_KEY}&country=${symbolCountry}&year=2022${
-    holidayTypes && `&type=${holidayTypes}`
-  }`;
-  const response = await fetch(searchURL);
-  console.log("response holiday:", response);
-  return response.json();
-};
-
 const Home: NextPage = () => {
   const [searchText, setSearchText] = useState<string>("");
   const [searchError, setSearchError] = useState<boolean>(false);
   const [symbolCountry, setSymbolCountry] = useState<string>("");
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
   const [holidayTypes, setHolidayTypes] = useState<string>("");
+
+  // const {
+  //   data,
+  //   status,
+  //   isLoading,
+  //   isError,
+  //   error,
+  //   // refetch: fetchHolidayRefetch,
+  // } = useHolidays({ symbolCountry, holidayTypes, fetchFun: fetchHolidays });
 
   const {
     data,
@@ -69,7 +55,7 @@ const Home: NextPage = () => {
     isError,
     error,
     // refetch: fetchHolidayRefetch,
-  } = useHolidays({ symbolCountry, holidayTypes, fetchFun: fetchHolidays });
+  } = useHolidays({ symbolCountry, holidayTypes });
 
   // const {
   //   data: countriesData,
@@ -80,7 +66,7 @@ const Home: NextPage = () => {
   //   onError: (error: any) => console.log(error.message),
   // });
 
-  const { data: countriesData } = useCountries(fetchCountries);
+  const { data: countriesData } = useCountries();
 
   const holidayData = data?.response.holidays;
   const holidaysList = Object.keys(initialHolidayTypes);
@@ -105,7 +91,7 @@ const Home: NextPage = () => {
 
     const countries = countriesData?.response.countries;
     const findCertainCountry = countries?.find(
-      ({ country_name }: any) =>
+      ({ country_name }) =>
         country_name.toLowerCase() === searchText.trim().toLowerCase()
     );
     const symbol = findCertainCountry?.["iso-3166"];
@@ -158,7 +144,7 @@ const Home: NextPage = () => {
       {!holidayData && (
         <div className={styles.imageCenterContainer}>
           {searchError && <p>Search Error, Country not found</p>}
-          <Image src={TRAVEL_IMG} alt={"travel_img"} width={360} height={360} />
+          <Image src={TRAVEL_IMG} alt={""} width={360} height={360} />
           <span className={styles.textCenter}>Please Search a country</span>
         </div>
       )}
