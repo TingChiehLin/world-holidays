@@ -2,8 +2,6 @@ This is a practical project in order to improve my skills using the latest techn
 
 ![desktop_preview](./public/desktop_demo.png)
 
-![mobile_preview](./public/mobile_demo.png)
-
 ## Table of contents
 
 - [Table of contents](#table-of-contents)
@@ -62,7 +60,7 @@ To learn more from this project, take a look at the following resources:
 
 - [Border Property](https://stackoverflow.com/questions/628301/the-border-radius-property-and-border-collapsecollapse-dont-mix-how-can-i-use) - To resolve border issue
 - [React Query Course](https://www.youtube.com/watch?v=NQULKpW6hK4) - data-fetching library with fetching, caching, synchronising, and updating the server state in my react application
-- [](https://www.w3.org/WAI/tutorials/images/decorative/) - Understung Decorative Images for img tag
+- [Decorative Images](https://www.w3.org/WAI/tutorials/images/decorative/) - Understung Decorative Images for img tag
 
 ## Deploy on Vercel
 
