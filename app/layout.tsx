@@ -16,7 +16,7 @@ export default function RootLayout({
         <div className="content-wrap">{children}</div>
         <footer>
           <span>
-            Developed by{" "}
+            Developed by
             <a
               target="_blank"
               rel="noopener noreferrer"

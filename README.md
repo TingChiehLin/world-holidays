@@ -1,16 +1,23 @@
+## World Holidays introduction
+
 This is a practical project in order to improve my skills using the latest technology.
 
 ![desktop_preview](./public/desktop_demo.png)
 
 ## Table of contents
 
+- [World Holidays introduction](#world-holidays-introduction)
 - [Table of contents](#table-of-contents)
+- [Deploy on Vercel](#deploy-on-vercel)
 - [Getting Started](#getting-started)
 - [Tech I used](#tech-i-used)
 - [API](#api)
 - [Challenge](#challenge)
 - [Learn More](#learn-more)
-- [Deploy on Vercel](#deploy-on-vercel)
+
+## Deploy on Vercel
+
+You can see my project on Vercel [Demo Link](https://world-holidays.vercel.app)
 
 ## Getting Started
 
@@ -34,7 +41,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - Next.js 13
 - CSS3 Module
 - React Query
-- Test Library()
+- Test Library
 
 ## API
 
@@ -60,8 +67,4 @@ To learn more from this project, take a look at the following resources:
 
 - [Border Property](https://stackoverflow.com/questions/628301/the-border-radius-property-and-border-collapsecollapse-dont-mix-how-can-i-use) - To resolve border issue
 - [React Query Course](https://www.youtube.com/watch?v=NQULKpW6hK4) - data-fetching library with fetching, caching, synchronising, and updating the server state in my react application
-- [Decorative Images](https://www.w3.org/WAI/tutorials/images/decorative/) - Understung Decorative Images for img tag
-
-## Deploy on Vercel
-
-You can see my project on Vercel [Demo Link](https://world-holidays.vercel.app)
+- [Decorative Images](https://www.w3.org/WAI/tutorials/images/decorative/) - Understanding Decorative Images for img tag
