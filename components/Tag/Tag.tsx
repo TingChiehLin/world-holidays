@@ -1,14 +1,14 @@
 import { FC } from "react";
 import styles from "./Tag.module.css";
 
-type Holidays =
+export type Holidays =
   | "National holiday"
   | "Observance"
   | "Common local holiday"
   | "Season";
 
 interface TagProp {
-  typeName: Holidays;
+  type: Holidays;
 }
 
 const holidayColorMapper: { [key in Holidays]: string } = {
@@ -18,11 +18,9 @@ const holidayColorMapper: { [key in Holidays]: string } = {
   Season: styles.tag_season,
 };
 
-const Tag: FC<TagProp> = ({ typeName }) => {
-  const tagBgColor = holidayColorMapper[typeName];
-  return (
-    <div className={`${styles.tag_container} ${tagBgColor}`}>{typeName}</div>
-  );
+const Tag: FC<TagProp> = ({ type }) => {
+  const tagBgColor = holidayColorMapper[type] || styles.tag_default;
+  return <div className={`${styles.tag_container} ${tagBgColor}`}>{type}</div>;
 };
 
 export default Tag;

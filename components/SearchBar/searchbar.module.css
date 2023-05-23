@@ -4,7 +4,8 @@
 
 .search_input_container {
   position: relative;
-  max-width: 32rem;
+  width: 100%;
+  max-width: 24rem;
 }
 
 .search_input {

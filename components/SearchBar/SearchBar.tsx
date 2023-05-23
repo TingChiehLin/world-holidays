@@ -11,11 +11,19 @@ interface SearchBarPropType {
   name: string;
   value: string;
   placeholder: string;
-  currentState: string;
   isInvalid: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onClick: () => void;
 }
+
+const initialCheckboxData = {
+  nationalHoliday: false,
+  observance: false,
+  localHoliday: false,
+  season: false,
+};
+
+const holidayTypeList = Object.keys(initialCheckboxData);
 
 const SearchBar: FC<SearchBarPropType> = ({
   id,
@@ -23,16 +31,12 @@ const SearchBar: FC<SearchBarPropType> = ({
   name,
   value,
   placeholder,
-  currentState,
   isInvalid,
   onChange,
   onClick,
 }) => {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
-  const handleDropdownEvent = () => {
-    console.log(isOpenModal);
-    setIsOpenModal(!isOpenModal);
-  };
+
   return (
     <>
       <div className={styles.search_input_container}>
@@ -42,7 +46,7 @@ const SearchBar: FC<SearchBarPropType> = ({
           name={name}
           value={value}
           className={`${styles.search_input} ${
-            currentState === "error" && styles.search_error
+            isInvalid && styles.search_error
           }`}
           onChange={onChange}
           placeholder={placeholder}
@@ -53,7 +57,6 @@ const SearchBar: FC<SearchBarPropType> = ({
           className={styles.search_input_icon}
           onClick={() => {
             onClick();
-            handleDropdownEvent();
           }}
         />
       </div>

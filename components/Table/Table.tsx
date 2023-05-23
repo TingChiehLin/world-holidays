@@ -1,27 +1,55 @@
-import { FC, useState, useEffect } from "react";
+import { FC } from "react";
 import styles from "./Table.module.css";
 
-import TabelRow from "../TabelRow";
+import TableRow from "../TableRow";
+import { Holidays } from "../Tag";
+
+type TableRowType = {
+  urlid: string;
+  name: string;
+  date: {
+    iso: string;
+  };
+  description: string;
+  type: Holidays[];
+};
 
 interface TableSectionPropType {
-  tableData: any;
-  currentState: string;
+  tableData: TableRowType[];
 }
 
-const Table: FC<TableSectionPropType> = ({ tableData, currentState }) => {
+const Table: FC<TableSectionPropType> = ({ tableData }) => {
+  console.log("tableData:", tableData);
   return (
     <>
-      <table className={styles.table_container}>
+      <table
+        className={`${styles.table_container} ${
+          tableData != undefined &&
+          styles.close_table_container_radius_bl +
+            " " +
+            styles.close_table_container_radius_br
+        }`}
+      >
         <thead>
           <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Date</th>
-            <th scope="col">Description</th>
-            <th scope="col">Type</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Type</th>
           </tr>
         </thead>
         <tbody className={styles.table_data}>
-          <TabelRow typeName={""} />
+          {(tableData || []).map((t: TableRowType) => {
+            return (
+              <TableRow
+                key={t.urlid}
+                name={t.name}
+                date={t.date.iso}
+                description={t.description}
+                types={t.type}
+              />
+            );
+          })}
         </tbody>
       </table>
     </>
