@@ -24,8 +24,6 @@ You can see my project on Vercel [Demo Link](https://world-holidays.vercel.app)
 
 You can see my project on Vercel [Demo Link](https://world-holidays.vercel.app)
 
-> > > > > > > origin/main
-
 ## Getting Started
 
 Firstly, install node_modules dependencies
