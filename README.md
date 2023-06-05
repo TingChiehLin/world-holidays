@@ -13,11 +13,18 @@ You can see my project on Vercel [Demo Link](https://world-holidays.vercel.app)
 - [World Holidays introduction](#world-holidays-introduction)
 - [Deploy on Vercel](#deploy-on-vercel)
 - [Table of contents](#table-of-contents)
+- [Deploy on Vercel](#deploy-on-vercel-1)
 - [Getting Started](#getting-started)
 - [Tech I used](#tech-i-used)
 - [API](#api)
 - [Challenge](#challenge)
 - [Learn More](#learn-more)
+
+## Deploy on Vercel
+
+You can see my project on Vercel [Demo Link](https://world-holidays.vercel.app)
+
+> > > > > > > origin/main
 
 ## Getting Started
 
