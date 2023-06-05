@@ -4,11 +4,16 @@ This is a practical project in order to improve my skills using the latest techn
 
 ![desktop_preview](./public/desktop_demo.png)
 
+## Deploy on Vercel
+
+You can see my project on Vercel [Demo Link](https://world-holidays.vercel.app)
+
 ## Table of contents
 
 - [World Holidays introduction](#world-holidays-introduction)
-- [Table of contents](#table-of-contents)
 - [Deploy on Vercel](#deploy-on-vercel)
+- [Table of contents](#table-of-contents)
+- [Deploy on Vercel](#deploy-on-vercel-1)
 - [Getting Started](#getting-started)
 - [Tech I used](#tech-i-used)
 - [API](#api)
@@ -18,6 +23,8 @@ This is a practical project in order to improve my skills using the latest techn
 ## Deploy on Vercel
 
 You can see my project on Vercel [Demo Link](https://world-holidays.vercel.app)
+
+> > > > > > > origin/main
 
 ## Getting Started
 
