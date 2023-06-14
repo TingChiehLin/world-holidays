@@ -46,7 +46,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - Next.js 13
 - CSS3 Module
 - React Query
-- Test Library
+- Test Library(Jest and Cypress)
 
 ## API
 

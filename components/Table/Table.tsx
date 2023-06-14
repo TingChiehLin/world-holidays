@@ -38,7 +38,7 @@ const Table: FC<TableSectionPropType> = ({ tableData }) => {
             <th>Type</th>
           </tr>
         </thead>
-        <tbody className={styles.table_data}>
+        <tbody id="holidays_contain" className={styles.table_data}>
           {(tableData || []).map((t: TableRowType) => {
             return (
               <TableRow

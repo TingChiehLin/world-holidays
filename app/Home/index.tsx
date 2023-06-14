@@ -143,9 +143,13 @@ const Home: NextPage = () => {
       </TypeModal>
       {!holidayData && (
         <div className={styles.imageCenterContainer}>
-          {searchError && <p>Search Error, Country not found</p>}
           <Image src={TRAVEL_IMG} alt={""} width={360} height={360} />
-          <span className={styles.textCenter}>Please Search a country</span>
+          {searchError && (
+            <p id="error_text">Search Error, Country not found</p>
+          )}
+          {!searchError && (
+            <span className={styles.textCenter}>Please Search a country</span>
+          )}
         </div>
       )}
       {holidayData && <Table tableData={holidayData} />}
