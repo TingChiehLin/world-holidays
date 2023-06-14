@@ -39,10 +39,10 @@ const Table: FC<TableSectionPropType> = ({ tableData }) => {
           </tr>
         </thead>
         <tbody id="holidays_contain" className={styles.table_data}>
-          {(tableData || []).map((t: TableRowType) => {
+          {(tableData || []).map((t: TableRowType, index) => {
             return (
               <TableRow
-                key={t.urlid}
+                key={`${t.urlid}-${index}`}
                 name={t.name}
                 date={t.date.iso}
                 description={t.description}

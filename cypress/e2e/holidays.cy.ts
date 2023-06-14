@@ -3,13 +3,13 @@
 describe("holiday search", () => {
   it("should click submit button", () => {
     cy.visit("http://localhost:3000");
-    cy.get("#search-box").type("Australia");
+    cy.get("#search-box").type("Portugal");
     cy.contains("Submit").click();
     cy.get("#holidays_contain").should("have.length", 1);
   });
   it("should filter holidays with national type", () => {
     cy.visit("http://localhost:3000");
-    cy.get("#search-box").type("Australia");
+    cy.get("#search-box").type("Portugal");
     cy.contains("Submit").click();
     cy.get("#national").check("national");
     cy.get("#holidays_contain").should("have.length", 1);

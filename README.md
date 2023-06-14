@@ -15,8 +15,10 @@ You can see my project on Vercel [Demo Link](https://world-holidays.vercel.app)
 - [Table of contents](#table-of-contents)
 - [Deploy on Vercel](#deploy-on-vercel-1)
 - [Getting Started](#getting-started)
+- [Running Cypress](#running-cypress)
 - [Tech I used](#tech-i-used)
 - [API](#api)
+- [Set Up API Key](#set-up-api-key)
 - [Challenge](#challenge)
 - [Learn More](#learn-more)
 
@@ -29,16 +31,22 @@ You can see my project on Vercel [Demo Link](https://world-holidays.vercel.app)
 Firstly, install node_modules dependencies
 
 ```bash
-pnpm install
+yarn install
 ```
 
 And then, run the development server:
 
 ```bash
-pnpm dev
+yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Running Cypress
+
+```
+yarn cypress open
+```
 
 ## Tech I used
 
@@ -54,6 +62,14 @@ Worldwide Holidays and Observances RESTful API
 
 - [Calendarific API](https://calendarific.com/api-documentation)
 - [API Documentation](https://calendarific.com/api-documentation)
+
+## Set Up API Key
+
+``
+
+1. To create .env.local file on the root path
+2. Inside file, declare a variable and give your API Key like this: NEXT_PUBLIC_API_KEY=Your API Key
+   ``
 
 ## Challenge
 
