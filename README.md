@@ -14,11 +14,11 @@ You can see my project on Vercel [Demo Link](https://world-holidays.vercel.app)
 - [Deploy on Vercel](#deploy-on-vercel)
 - [Table of contents](#table-of-contents)
 - [Deploy on Vercel](#deploy-on-vercel-1)
-- [Getting Started](#getting-started)
+- [Set Up API Key](#set-up-api-key)
+- [Install dependencies \& Run a server](#install-dependencies--run-a-server)
 - [Running Cypress](#running-cypress)
 - [Tech I used](#tech-i-used)
 - [API](#api)
-- [Set Up API Key](#set-up-api-key)
 - [Challenge](#challenge)
 - [Learn More](#learn-more)
 
@@ -26,9 +26,18 @@ You can see my project on Vercel [Demo Link](https://world-holidays.vercel.app)
 
 You can see my project on Vercel [Demo Link](https://world-holidays.vercel.app)
 
-## Getting Started
+## Set Up API Key
 
-Firstly, install node_modules dependencies
+First of all, set up API Key
+
+``
+1. Create ``.env.local`` file on the root path
+2. Inside the file, declare a variable with API Key, like this: ``NEXT_PUBLIC_API_KEY=<your-api-key>``
+``
+
+## Install dependencies & Run a server
+
+Next, install node_modules dependencies
 
 ```bash
 yarn install
@@ -60,16 +69,7 @@ yarn cypress open
 
 Worldwide Holidays and Observances RESTful API
 
-- [Calendarific API](https://calendarific.com/api-documentation)
 - [API Documentation](https://calendarific.com/api-documentation)
-
-## Set Up API Key
-
-``
-
-1. To create .env.local file on the root path
-2. Inside file, declare a variable and give your API Key like this: NEXT_PUBLIC_API_KEY=Your API Key
-   ``
 
 ## Challenge
 
