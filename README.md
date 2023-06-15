@@ -14,7 +14,9 @@ You can see my project on Vercel [Demo Link](https://world-holidays.vercel.app)
 - [Deploy on Vercel](#deploy-on-vercel)
 - [Table of contents](#table-of-contents)
 - [Deploy on Vercel](#deploy-on-vercel-1)
-- [Getting Started](#getting-started)
+- [Set Up API Key](#set-up-api-key)
+- [Install dependencies \& Run a server](#install-dependencies--run-a-server)
+- [Running Cypress](#running-cypress)
 - [Tech I used](#tech-i-used)
 - [API](#api)
 - [Challenge](#challenge)
@@ -24,21 +26,36 @@ You can see my project on Vercel [Demo Link](https://world-holidays.vercel.app)
 
 You can see my project on Vercel [Demo Link](https://world-holidays.vercel.app)
 
-## Getting Started
+## Set Up API Key
 
-Firstly, install node_modules dependencies
+First of all, set up API Key
+
+``
+1. Create ``.env.local`` file on the root path
+2. Inside the file, declare a variable with API Key, like this: ``NEXT_PUBLIC_API_KEY=<your-api-key>``
+``
+
+## Install dependencies & Run a server
+
+Next, install node_modules dependencies
 
 ```bash
-pnpm install
+yarn install
 ```
 
 And then, run the development server:
 
 ```bash
-pnpm dev
+yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Running Cypress
+
+```
+yarn cypress open
+```
 
 ## Tech I used
 
@@ -46,13 +63,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - Next.js 13
 - CSS3 Module
 - React Query
-- Test Library
+- Test Library(Jest and Cypress)
 
 ## API
 
 Worldwide Holidays and Observances RESTful API
 
-- [Calendarific API](https://calendarific.com/api-documentation)
 - [API Documentation](https://calendarific.com/api-documentation)
 
 ## Challenge

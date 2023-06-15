@@ -38,11 +38,11 @@ const Table: FC<TableSectionPropType> = ({ tableData }) => {
             <th>Type</th>
           </tr>
         </thead>
-        <tbody className={styles.table_data}>
-          {(tableData || []).map((t: TableRowType) => {
+        <tbody id="holidays_contain" className={styles.table_data}>
+          {(tableData || []).map((t: TableRowType, index) => {
             return (
               <TableRow
-                key={t.urlid}
+                key={`${t.urlid}-${index}`}
                 name={t.name}
                 date={t.date.iso}
                 description={t.description}
